@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-book-table
+      author: valentyn
+      changes:
+        - createTable:
+            tableName: BOOK
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: TITLE
+                  type: varchar(255)
+              - column:
+                  name: AUTHOR_ID
+                  type: bigint
+                  constraints:
+                    unique: false
+                    nullable: false
+                    foreignKeyName: fk_book_author
+                    references: AUTHOR(ID)
+                    deleteCascade: true

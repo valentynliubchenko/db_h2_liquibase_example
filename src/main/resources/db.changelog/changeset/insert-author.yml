@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-author-records
+      author: valentyn
+      changes:
+        - insert:
+            tableName: AUTHOR
+            columns:
+              - column:
+                  name: name
+                  value: "John Doe"
+        - insert:
+            tableName: AUTHOR
+            columns:
+              - column:
+                  name: name
+                  value: "Jane Smith"
+        - insert:
+            tableName: AUTHOR
+            columns:
+              - column:
+                  name: name
+                  value: "Bob Johnson"

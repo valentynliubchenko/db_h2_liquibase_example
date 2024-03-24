@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-book-records
+      author: valentyn
+      changes:
+        - insert:
+            tableName: BOOK
+            columns:
+              - column:
+                  name: title
+                  value: "Book 1"
+              - column:
+                  name: author_id
+                  value: 1
+        - insert:
+            tableName: BOOK
+            columns:
+              - column:
+                  name: title
+                  value: "Book 2"
+              - column:
+                  name: author_id
+                  valueNumeric: 2
+        - insert:
+            tableName: BOOK
+            columns:
+              - column:
+                  name: title
+                  value: "Book 3"
+              - column:
+                  name: author_id
+                  valueNumeric: 3

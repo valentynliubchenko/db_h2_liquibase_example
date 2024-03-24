@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - include:
+      file: db.changelog/changeset/create-author.yml
+  - include:
+      file: db.changelog/changeset/insert-author.yml
+  - include:
+      file: db.changelog/changeset/create-book.yml
+  - include:
+      file: db.changelog/changeset/insert-book.yml
