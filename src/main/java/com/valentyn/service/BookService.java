@@ -23,4 +23,12 @@ public class BookService {
     public BookDTO saveBook(BookDTO bookDTO) {
         return bookRepository.save(bookDTO);
     }
+
+    public List<BookDTO> findByAuthorName(String authorName) {
+        return bookRepository.findByAuthorName(authorName);
+    }
+    public List<BookDTO> findBooksByAuthorNameFirstAndLastLetter(String firstLetter, String lastLetter) {
+        return bookRepository.findBooksByAuthorNameFirstAndLastLetter(firstLetter, lastLetter);
+    }
+
 }

@@ -3,7 +3,6 @@ package com.valentyn.controller;
 import com.valentyn.dto.AuthorDTO;
 import com.valentyn.dto.BookDTO;
 import com.valentyn.service.BookService;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +33,7 @@ public class BookController {
         bookDTO.setAuthor(authorDTO);
 
         BookDTO createdBook = bookService.saveBook(bookDTO);
-        log.info("createdBook {}",createdBook);
+        log.info("createdBook {}", createdBook);
         return new ResponseEntity<>(createdBook, HttpStatus.CREATED);
     }
 
@@ -47,4 +46,17 @@ public class BookController {
     public BookDTO saveBook(@RequestBody BookDTO bookDTO) {
         return bookService.saveBook(bookDTO);
     }
+
+    @GetMapping("/books/byAuthor")
+    public List<BookDTO> findByAuthorName(@RequestParam String authorName) {
+        return bookService.findByAuthorName(authorName);
+    }
+
+    @GetMapping("/books/byAuthorName")
+    public List<BookDTO> findByAuthorFirstNameStartingWithAndAuthorLastNameEndingWith(
+            @RequestParam String firstLetter,
+            @RequestParam String lastLetter) {
+        return bookService.findBooksByAuthorNameFirstAndLastLetter(firstLetter, lastLetter);
+    }
+
 }
