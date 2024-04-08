@@ -1,34 +1,50 @@
 package com.valentyn.service;
 
+import com.valentyn.bom.Book;
+import com.valentyn.converter.BookConverter;
 import com.valentyn.dto.BookDTO;
 import com.valentyn.repository.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class BookService {
 
     private final BookRepository bookRepository;
 
-    public BookService(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
+    private final BookConverter bookConverter;
+
+    public List<Book> getAllBooks() {
+        List<Book> bookList = new ArrayList<>();
+        for (BookDTO bookDTO : bookRepository.findAll()) {
+            bookList.add(bookConverter.fromDTO(bookDTO));
+        }
+        return bookList;
     }
 
-    public List<BookDTO> getAllBooks() {
-        return bookRepository.findAll();
+    public Book saveBook(Book book) {
+        BookDTO bookDTO = bookConverter.toDTO(book);
+        return bookConverter.fromDTO(bookRepository.save(bookDTO));
     }
 
-    public BookDTO saveBook(BookDTO bookDTO) {
-        return bookRepository.save(bookDTO);
+    public List<Book> findByAuthorName(String authorName) {
+        List<Book> bookList = new ArrayList<>();
+        for (BookDTO bookDTO : bookRepository.findByAuthorName(authorName)) {
+            bookList.add(bookConverter.fromDTO(bookDTO));
+        }
+        return bookList;
     }
 
-    public List<BookDTO> findByAuthorName(String authorName) {
-        return bookRepository.findByAuthorName(authorName);
-    }
-    public List<BookDTO> findBooksByAuthorNameFirstAndLastLetter(String firstLetter, String lastLetter) {
-        return bookRepository.findBooksByAuthorNameFirstAndLastLetter(firstLetter, lastLetter);
+    public List<Book> findBooksByAuthorNameFirstAndLastLetter(String firstLetter, String lastLetter) {
+        List<Book> bookList = new ArrayList<>();
+        for (BookDTO bookDTO : bookRepository.findBooksByAuthorNameFirstAndLastLetter(firstLetter, lastLetter)) {
+            bookList.add(bookConverter.fromDTO(bookDTO));
+        }
+        return bookList;
     }
 
 }

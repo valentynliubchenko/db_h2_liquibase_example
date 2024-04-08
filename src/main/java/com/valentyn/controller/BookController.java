@@ -1,7 +1,7 @@
 package com.valentyn.controller;
 
-import com.valentyn.dto.AuthorDTO;
-import com.valentyn.dto.BookDTO;
+import com.valentyn.bom.Author;
+import com.valentyn.bom.Book;
 import com.valentyn.service.BookService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -22,38 +22,37 @@ public class BookController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<BookDTO> createBook(@RequestParam String title, @RequestParam String authorName) {
+    public ResponseEntity<Book> createBook(@RequestParam String title, @RequestParam String authorName) {
 
-        BookDTO bookDTO = new BookDTO();
-        bookDTO.setTitle(title);
+        Book book = new Book();
+        book.setTitle(title);
 
-        AuthorDTO authorDTO = new AuthorDTO();
-        authorDTO.setName(authorName);
+        Author author = new Author();
+        author.setName(authorName);
 
-        bookDTO.setAuthor(authorDTO);
-
-        BookDTO createdBook = bookService.saveBook(bookDTO);
+        book.setAuthor(author);
+        Book createdBook = bookService.saveBook(book);
         log.info("createdBook {}", createdBook);
         return new ResponseEntity<>(createdBook, HttpStatus.CREATED);
     }
 
     @GetMapping
-    public List<BookDTO> getAllBooks() {
+    public List<Book> getAllBooks() {
         return bookService.getAllBooks();
     }
 
     @PostMapping
-    public BookDTO saveBook(@RequestBody BookDTO bookDTO) {
-        return bookService.saveBook(bookDTO);
+    public Book saveBook(@RequestBody Book book) {
+        return bookService.saveBook(book);
     }
 
     @GetMapping("/books/byAuthor")
-    public List<BookDTO> findByAuthorName(@RequestParam String authorName) {
+    public List<Book> findByAuthorName(@RequestParam String authorName) {
         return bookService.findByAuthorName(authorName);
     }
 
     @GetMapping("/books/byAuthorName")
-    public List<BookDTO> findByAuthorFirstNameStartingWithAndAuthorLastNameEndingWith(
+    public List<Book> findByAuthorFirstNameStartingWithAndAuthorLastNameEndingWith(
             @RequestParam String firstLetter,
             @RequestParam String lastLetter) {
         return bookService.findBooksByAuthorNameFirstAndLastLetter(firstLetter, lastLetter);
