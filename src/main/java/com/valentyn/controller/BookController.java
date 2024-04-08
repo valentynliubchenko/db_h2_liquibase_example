@@ -46,12 +46,12 @@ public class BookController {
         return bookService.saveBook(book);
     }
 
-    @GetMapping("/books/byAuthor")
+    @GetMapping("/byAuthor")
     public List<Book> findByAuthorName(@RequestParam String authorName) {
         return bookService.findByAuthorName(authorName);
     }
 
-    @GetMapping("/books/byAuthorName")
+    @GetMapping("/byAuthorName")
     public List<Book> findByAuthorFirstNameStartingWithAndAuthorLastNameEndingWith(
             @RequestParam String firstLetter,
             @RequestParam String lastLetter) {
