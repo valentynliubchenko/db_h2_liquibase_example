@@ -24,7 +24,7 @@ public class BookController {
     @PostMapping("/create")
     public ResponseEntity<Book> createBook(@RequestParam String title, @RequestParam String authorName) {
 
-        Book book = new Book();
+        Book book = Book.builder().id(0L).title(title).build();;
         book.setTitle(title);
 
         Author author = new Author();

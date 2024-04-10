@@ -12,9 +12,7 @@ public class BookConverter {
     private final AuthorConverter authorConverter;
 
     public Book fromDTO(BookDTO bookDTO) {
-        Book book = new Book();
-        book.setId(bookDTO.getId());
-        book.setTitle(bookDTO.getTitle());
+        Book book = Book.builder().id(bookDTO.getId()).title(bookDTO.getTitle()).build();;
         if (bookDTO.getAuthor() != null) {
             book.setAuthor(authorConverter.fromDTO(bookDTO.getAuthor()));
         }

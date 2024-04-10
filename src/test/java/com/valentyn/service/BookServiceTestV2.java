@@ -39,7 +39,7 @@ public class BookServiceTestV2 {
         BookDTO secondBookDTO = new BookDTO();
         bookDTOList.add(secondBookDTO);
         when(bookRepository.findAll()).thenReturn(bookDTOList);
-        Book book = new Book();
+        Book book = Book.builder().id(1L).title("title").build();;
         when(bookConverter.fromDTO(any(BookDTO.class))).thenReturn(book);
 
         // Act
@@ -55,7 +55,7 @@ public class BookServiceTestV2 {
     @Test
     public void testSaveBook() {
         // Arrange
-        Book book = new Book();
+        Book book = Book.builder().id(1L).title("title").build();;
         BookDTO bookDTO = new BookDTO();
         when(bookConverter.toDTO(book)).thenReturn(bookDTO);
         when(bookConverter.fromDTO(bookDTO)).thenReturn(book);

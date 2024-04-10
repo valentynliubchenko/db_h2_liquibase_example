@@ -1,4 +1,4 @@
-Feature: Search for an Auto by name
+Feature: Search for an Book by name
 
   Scenario: Find an book by its name
     Given the following books exist

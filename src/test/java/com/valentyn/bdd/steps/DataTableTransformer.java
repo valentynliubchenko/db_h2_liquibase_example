@@ -10,8 +10,7 @@ public class DataTableTransformer {
 
     @DataTableType
     public Book defineBook(Map<String, String> entryMap) {
-        Book book = new Book();
-        book.setId(0L);
+        Book book = Book.builder().id(0L).build();;
         Author author = new Author();
         author.setId(0L);
         if (entryMap.containsKey("Author"))

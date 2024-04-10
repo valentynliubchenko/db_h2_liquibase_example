@@ -40,8 +40,7 @@ public class BookControllerTest {
         // Arrange
         String title = "Test Book";
         String authorName = "Test Author";
-        Book book = new Book();
-        book.setTitle(title);
+        Book book = Book.builder().id(0L).title(title).build();;
         Author author = new Author();
         author.setName(authorName);
         book.setAuthor(author);
@@ -62,8 +61,8 @@ public class BookControllerTest {
     public void testGetAllBooks() throws Exception {
         // Arrange
         List<Book> books = new ArrayList<>();
-        books.add(new Book());
-        books.add(new Book());
+        books.add(Book.builder().id(1L).title("title 1").build());
+        books.add(Book.builder().id(2L).title("title 2").build());
         when(bookService.getAllBooks()).thenReturn(books);
 
         // Act
@@ -85,8 +84,7 @@ public class BookControllerTest {
     @Test
     public void testSaveBook() throws Exception {
         // Arrange
-        Book book = new Book();
-        book.setTitle("First Title");
+        Book book = Book.builder().id(0L).title("First Title").build();;
         when(bookService.saveBook(any(Book.class))).thenReturn(book);
         String requestBody = objectMapper.writeValueAsString(book);
 
@@ -112,8 +110,8 @@ public class BookControllerTest {
         // Arrange
         String authorName = "Test Author";
         List<Book> books = new ArrayList<>();
-        books.add(new Book());
-        books.add(new Book());
+        books.add(Book.builder().id(1L).title("title 1").build());
+        books.add(Book.builder().id(2L).title("title 2").build());
         when(bookService.findByAuthorName(authorName)).thenReturn(books);
 
         // Act & Assert
@@ -139,8 +137,8 @@ public class BookControllerTest {
         String firstLetter = "A";
         String lastLetter = "Z";
         List<Book> books = new ArrayList<>();
-        books.add(new Book());
-        books.add(new Book());
+        books.add(Book.builder().id(1L).title("title 1").build());
+        books.add(Book.builder().id(2L).title("title 2").build());
         when(bookService.findBooksByAuthorNameFirstAndLastLetter(firstLetter, lastLetter)).thenReturn(books);
 
         // Act & Assert
