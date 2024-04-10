@@ -1,9 +1,12 @@
 Feature: Search for an Book by name
 
-  Scenario: Find an book by its name
+  Scenario: Find an book by authors name
     Given the following books exist
-      | Title     | Author |
-      | Harry     | Vlad   |
-      | Cat       | Susan  |
-    When I search for the book named "Harry"
-    Then I should find an author "Vlad"
+     | BookId | Title   |  Author |
+     |   *1   | Harry   |  Vlad   |
+     |   *2   | Cat     |  Susan  |
+    When Search the book by authors "Susan"
+    Then Request returned code 200
+    And Book will find
+      | BookId | Title   |  Author |
+      |   *2   | Cat     |  Susan  |

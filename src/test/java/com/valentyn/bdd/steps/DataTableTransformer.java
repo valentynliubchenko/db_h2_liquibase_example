@@ -10,7 +10,9 @@ public class DataTableTransformer {
 
     @DataTableType
     public Book defineBook(Map<String, String> entryMap) {
-        Book book = Book.builder().id(0L).build();;
+        Book book = Book.builder().id(0L).build();
+        if (entryMap.containsKey("BookId"))
+            book.setId(stringIdToLong(entryMap.get("BookId")));
         Author author = new Author();
         author.setId(0L);
         if (entryMap.containsKey("Author"))
@@ -20,4 +22,9 @@ public class DataTableTransformer {
         book.setAuthor(author);
         return book;
     }
+
+    private Long stringIdToLong(String id) {
+        return Long.parseLong(id.replaceAll("\\*", ""));
+    }
+
 }

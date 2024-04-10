@@ -1,6 +1,9 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb;
+    username: sa
+    password: pwd
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL
+    driverClassName: org.h2.Driver
 
 logging:
   level:
