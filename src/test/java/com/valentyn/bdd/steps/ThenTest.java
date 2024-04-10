@@ -15,8 +15,7 @@ public class ThenTest extends SpringIntegrationTest{
     @Then("I should find an author {string}")
     public void iShouldFindAnAuthor(String arg0) {
       log.info("iShouldFindAnAuthor");
-    //  verify(bookService, times(1)).saveBook(any());
-
+      verify(bookService, times(1)).saveBook(any());
     }
 
 }
