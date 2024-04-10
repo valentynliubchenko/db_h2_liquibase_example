@@ -1,7 +1,5 @@
 package com.valentyn.bdd;
 
-import com.valentyn.bdd.common.TestContext;
-import io.cucumber.java.After;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.platform.suite.api.ConfigurationParameter;
 import org.junit.platform.suite.api.IncludeEngines;
@@ -19,9 +17,4 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 @Slf4j
 public class RunCucumberTest {
 
-    @After
-    public void tearDown() {
-        TestContext.dropInstance();
-        log.info("tearDown completed...");
-    }
 }
