@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;
+
+logging:
+  level:
+    root: info
+    com:
+      valentyn: debug

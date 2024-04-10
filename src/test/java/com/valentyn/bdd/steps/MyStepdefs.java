@@ -1,4 +1,4 @@
-package com.valentyn.cucumber;
+package com.valentyn.bdd.steps;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

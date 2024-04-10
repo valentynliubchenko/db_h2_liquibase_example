@@ -18,7 +18,7 @@ public class BookDTO {
     @Column(name = "TITLE", length = 255)
     private String title;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "AUTHOR_ID", nullable = false)
     private AuthorDTO author;
 
