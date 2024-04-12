@@ -13,9 +13,9 @@ spring:
       enabled: true
       path: /h2-console
 
-  liquibase:
-    enabled: true
-    change-log: classpath:/db.changelog/db.changelog-master.yaml
+#  liquibase:
+#    enabled: true #Default value
+#    change-log: classpath:/db.changelog/db.changelog-master.yaml #Default value
 
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
