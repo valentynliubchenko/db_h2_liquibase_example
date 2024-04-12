@@ -24,4 +24,9 @@ public class GivenTest extends SpringIntegrationTest {
             TestContext.getInstance().getBookDtoMap().put(book.getId(), savedDto);
         }
     }
+
+    @Given("The books with title {string} and author {string} does not exist")
+    public void theBooksWithTitleAndAuthorDoesNotExist(String title, String author) {
+        log.info("The books with title {} and author {} does not exist ", title, author);
+    }
 }
